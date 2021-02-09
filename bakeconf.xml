@@ -3,10 +3,13 @@
 
     <module name="dce-meta-dev">
       <source type="git">
-        <attribute name="url" value="git://github.com/direct-code-execution/ns-3-dce"/>
+        <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>
+        <attribute name="revision" value="glibc-build"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
       <depends_on name="iperf" optional="True"/>
@@ -20,13 +23,16 @@
 
     <module name="dce-ns3-dev">
       <source type="git">
-		  <attribute name="url" value="git://github.com/direct-code-execution/ns-3-dce"/>
+		    <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>
+        <attribute name="revision" value="glibc-build"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
+      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
       <build type="waf" objdir="build">
         <attribute name="supported_os" value="linux;linux2"/>
-        <attribute name="configure_arguments" value="configure --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-libaspect=$INSTALLDIR --prefix=$INSTALLDIR"/>
+        <attribute name="configure_arguments" value="configure --disable-python --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --glibc-install-dir=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --prefix=$INSTALLDIR"/>
      </build>
     </module>
 
@@ -191,7 +197,46 @@
         <attribute name="build_arguments" value="CFLAGS=-fPIC CFLAGS+=-U_FORTIFY_SOURCE CXXFLAGS=-fPIC CXXFLAGS+=-U_FORTIFY_SOURCE LDFLAGS=-pie LDFLAGS+=-rdynamic"/>
       </build>
      </module>
-
+    
+    <module name="glibc-2.25">
+      <source type="git">
+        <attribute name="url" value="git://sourceware.org/git/glibc.git" />
+        <attribute name="revision" value="release/2.25/master" />
+        <attribute name="module_directory" value="glibc" />
+      </source>
+      <build type="inline" classname="GlibcModuleBuild">
+        <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/glibc-build;cd $INSTALLDIR/glibc-build;$SRCDIR/configure --prefix=/usr --disable-werror" />        
+        <code>class GlibcModuleBuild(InlineModuleBuild):
+    def __init__(self):
+        InlineModuleBuild.__init__(self)
+    def build(self, env, jobs):
+           build_dir = env.installdir + '/glibc-build'
+           install_dir = env.installdir + '/glibc'
+           dest_dir = 'DESTDIR=' + install_dir
+           env.run(['mkdir', '-p', install_dir], directory=env.srcdir)
+           env.run(['make'], directory=build_dir)
+           env.run(['make', 'install', dest_dir], directory=build_dir)
+    def clean(self, env):
+           build_dir = env.installdir + '/glibc-build'
+           env.run(['make', 'clean'], directory=build_dir)
+    def check_version(self, env):
+           return True</code>
+      </build>
+     </module>
+    
+    <module name="linux-dev">
+      <source type="git">
+        <attribute name="url" value="git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git" />
+        <attribute name="revision" value="master" />
+        <attribute name="module_directory" value="linux" />
+      </source>
+      <depends_on name="glibc-2.25" optional="False" />
+      <build type="make" objdir="yes">
+        <attribute name="build_arguments" value="headers_install INSTALL_HDR_PATH=$INSTALLDIR/glibc/usr" />
+        <attribute name="no_installation" value="True"/>
+      </build>
+     </module>
+    
     <module name="libdb-dev">
       <source type="system_dependency">
         <attribute name="dependency_test" value="db_185.h"/>
@@ -1476,13 +1521,16 @@
 
   <module name="ns-3-dev">
       <source type="git">
-        <attribute name="url" value="https://gitlab.com/nsnam/ns-3-dev.git"/>
+        <attribute name="url" value="https://gitlab.com/ParthPratim1/ns-3-dev.git"/>
+        <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="netanim" optional="True"/>
       <depends_on name="pybindgen" optional="True"/>
+      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
       <depends_on name="pyviz-gtk3-prerequisites" optional="True"/>
       <build type="waf" objdir="yes">
-        <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --enable-examples --enable-tests"/>
+        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --glibc-install-dir=$INSTALLDIR/glibc --enable-examples --enable-tests"/>
       </build>
   </module>
 
