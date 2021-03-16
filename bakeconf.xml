@@ -189,6 +189,7 @@
         <attribute name="revision" value="release/2.25/master" />
         <attribute name="module_directory" value="glibc" />
       </source>
+      <depends_on name="gawk" optional="False"/>
       <build type="inline" classname="GlibcModuleBuild">
         <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/glibc-build;cd $INSTALLDIR/glibc-build;$SRCDIR/configure --prefix=/usr --disable-werror" />        
         <code>class GlibcModuleBuild(InlineModuleBuild):
