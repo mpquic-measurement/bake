@@ -839,7 +839,7 @@
         <!-- not using 'archive' release because it untars to CastXML-0.4.3 -->
         <attribute name="url" value="https://github.com/CastXML/CastXML.git"/>
         <attribute name="revision" value="v0.4.3"/>
-       <attribute name="module_directory" value="castxml-0.4.3"/>
+        <attribute name="module_directory" value="castxml-0.4.3"/>
       </source>
       <build type="cmake" objdir="objdir">
         <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/bin"/>
@@ -907,7 +907,7 @@
       <build type="python" objdir="objdir">
         <attribute name="pre_installation" value="mkdir $INSTALLDIR"/>
       </build>
-      <depends_on name="castxml-0.3.6" optional="False"/>
+      <depends_on name="castxml-0.4.3" optional="False"/>
       <depends_on name="setuptools" optional="False"/>
       <depends_on name="cxxfilt" optional="False"/>
     </module>
