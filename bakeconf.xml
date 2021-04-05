@@ -7,7 +7,7 @@
         <attribute name="revision" value="glibc-build"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
-      <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="ns-3-dev-dce" optional="False"/>
       <depends_on name="glibc-2.25" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
