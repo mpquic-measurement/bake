@@ -7,7 +7,7 @@
         <attribute name="revision" value="glibc-build"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
-      <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="ns-3-dev-dce" optional="False"/>
       <depends_on name="glibc-2.25" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
@@ -1521,6 +1521,18 @@
   </module>
 
   <module name="ns-3-dev">
+      <source type="git">
+        <attribute name="url" value="https://gitlab.com/nsnam/ns-3-dev.git"/>
+      </source>
+      <depends_on name="netanim" optional="True"/>
+      <depends_on name="pybindgen" optional="True"/>
+      <depends_on name="pyviz-gtk3-prerequisites" optional="True"/>
+      <build type="waf" objdir="yes">
+        <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --enable-examples --enable-tests"/>
+      </build>
+  </module>
+
+  <module name="ns-3-dev-dce">
       <source type="git">
         <attribute name="url" value="https://gitlab.com/ParthPratim1/ns-3-dev.git"/>
         <attribute name="revision" value="glibc-build"/>
