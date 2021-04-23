@@ -7,8 +7,8 @@
         <attribute name="revision" value="glibc-build"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
-      <depends_on name="ns-3-dev-dce" optional="False"/>
-      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
@@ -28,7 +28,7 @@
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
-      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <build type="waf" objdir="build">
         <attribute name="supported_os" value="linux;linux2"/>
@@ -198,14 +198,15 @@
       </build>
      </module>
     
-    <module name="glibc-2.25">
+    <module name="glibc-2.31">
       <source type="git">
         <attribute name="url" value="git://sourceware.org/git/glibc.git" />
-        <attribute name="revision" value="release/2.25/master" />
+        <attribute name="revision" value="release/2.31/master" />
         <attribute name="module_directory" value="glibc" />
       </source>
       <depends_on name="gawk" optional="False"/>
       <build type="inline" classname="GlibcModuleBuild">
+        <attribute name="patch" value="$SRCDIR/../ns-3-dce/utils/glibc-2.31-disable-security-checks.patch"/>
         <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/glibc-build;cd $INSTALLDIR/glibc-build;$SRCDIR/configure --prefix=/usr --disable-werror" />        
         <code>class GlibcModuleBuild(InlineModuleBuild):
     def __init__(self):
@@ -231,7 +232,7 @@
         <attribute name="revision" value="master" />
         <attribute name="module_directory" value="linux" />
       </source>
-      <depends_on name="glibc-2.25" optional="False" />
+      <depends_on name="glibc-2.31" optional="False" />
       <build type="make" objdir="yes">
         <attribute name="build_arguments" value="headers_install INSTALL_HDR_PATH=$INSTALLDIR/glibc/usr" />
         <attribute name="no_installation" value="True"/>
@@ -476,6 +477,7 @@
       </source>
       <build type="make" objdir="yes">
         <attribute name="pre_installation" value="cd $SRCDIR; CFLAGS='-fPIC -g' LDFLAGS='-pie -rdynamic' ./configure --disable-opie --disable-digest --disable-ntlm --disable-largefile --disable-threads --disable-nls --disable-rpath --disable-iri --without-ssl --without-zlib --without-libiconv-prefix --without-libintl-prefix --without-libpth-prefix --without-included-regex --prefix=$INSTALLDIR"/>
+        <attribute name="post_installation" value="mv $INSTALLDIR/bin/wget $INSTALLDIR/bin_dce"/>
       </build>
      </module>
 
@@ -1531,20 +1533,6 @@
       </build>
   </module>
 
-  <module name="ns-3-dev-dce">
-      <source type="git">
-        <attribute name="url" value="https://gitlab.com/ParthPratim1/ns-3-dev.git"/>
-        <attribute name="revision" value="glibc-build"/>
-      </source>
-      <depends_on name="netanim" optional="True"/>
-      <depends_on name="pybindgen" optional="True"/>
-      <depends_on name="glibc-2.25" optional="False"/>
-      <depends_on name="linux-dev" optional="False"/>
-      <depends_on name="pyviz-gtk3-prerequisites" optional="True"/>
-      <build type="waf" objdir="yes">
-        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --with-glibc=$INSTALLDIR/glibc --enable-examples --enable-tests"/>
-      </build>
-  </module>
 
     <module name="ns-3.17">
       <source type="mercurial">
