@@ -404,7 +404,8 @@
          <attribute name="fetch_option" value=""/>
        </source>
        <depends_on name="bc" optional="False"/>
-       <build type="make">
+       <build type="make" objdir="no">
+         <attribute name="patch" value="$SRCDIR/../ns-3-dce/utils/linker-script-py-to-py3.patch"/>
          <attribute name="supported_os" value="linux;linux2"/>
          <attribute name="configure_arguments" value="defconfig ARCH=lib"/>
          <attribute name="build_arguments" value="library ARCH=lib"/>
