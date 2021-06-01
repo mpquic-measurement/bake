@@ -415,7 +415,7 @@
        <source type="git">
          <attribute name="url" value="https://github.com/ParthPratim/linux.git"/>
          <attribute name="module_directory" value="lkl"/>
-         <attribute name="revision" value="lkl-dce"/>         
+         <attribute name="revision" value="dce-b2"/>
        </source>
        <depends_on name="bc" optional="False"/>
        <build type="make" objdir="no">                  
