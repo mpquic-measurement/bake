@@ -24,7 +24,7 @@
     <module name="dce-ns3-dev">
       <source type="git">
 		    <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="lkl-dce"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
@@ -39,7 +39,7 @@
     <module name="dce-linux-dev">
       <source type="git">
 		  <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="lkl-dce"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
