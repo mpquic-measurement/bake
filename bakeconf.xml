@@ -4,7 +4,7 @@
     <module name="dce-meta-dev">
       <source type="git">
         <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="lkl-dce"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
@@ -48,7 +48,7 @@
       <depends_on name="lksctp-dev" optional="True"/>
       <build type="waf" objdir="yes" sourcedir="ns-3-dce">
         <attribute name="supported_os" value="linux;linux2"/>
-        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../lkl-linux/tools"/>
+        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../lkl/tools"/>
       </build>
     </module>
 
