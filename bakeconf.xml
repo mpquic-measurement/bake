@@ -43,12 +43,12 @@
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
-      <depends_on name="net-next-nuse-4.4.0" optional="False"/>
+      <depends_on name="lkl-linux" optional="False"/>
       <depends_on name="iproute2-4.4.0" optional="False"/>
       <depends_on name="lksctp-dev" optional="True"/>
       <build type="waf" objdir="yes" sourcedir="ns-3-dce">
         <attribute name="supported_os" value="linux;linux2"/>
-        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../net-next-nuse-4.4.0/arch"/>
+        <attribute name="configure_arguments" value="configure --disable-python --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../lkl-linux/tools"/>
       </build>
     </module>
 
@@ -408,6 +408,20 @@
          <attribute name="build_arguments" value="library ARCH=sim"/>
          <attribute name="no_installation" value="True"/>
          <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/libsim-linux3.7.0.so ./; ln -s -f libsim-linux3.7.0.so liblinux.so"/>
+       </build>
+     </module>
+    
+    <module name="lkl-linux">
+       <source type="git">
+         <attribute name="url" value="https://github.com/ParthPratim/linux.git"/>
+         <attribute name="module_directory" value="lkl"/>
+         <attribute name="revision" value="lkl-dce"/>         
+       </source>
+       <depends_on name="bc" optional="False"/>
+       <build type="make" objdir="no">                  
+         <attribute name="build_arguments" value="-C tools/lkl"/>
+         <attribute name="no_installation" value="True"/>
+         <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/tools/lkl/lib/liblkl.so ./;"/>
        </build>
      </module>
 
