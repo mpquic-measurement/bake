@@ -198,7 +198,7 @@
     
     <module name="glibc-2.31">
       <source type="git">
-        <attribute name="url" value="git://sourceware.org/git/glibc.git" />
+        <attribute name="url" value="https://sourceware.org/git/glibc.git" />
         <attribute name="revision" value="release/2.31/master" />
         <attribute name="module_directory" value="glibc" />
       </source>
