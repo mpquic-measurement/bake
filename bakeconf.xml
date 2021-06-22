@@ -7,6 +7,7 @@
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="libc-2.31" optional="False"/>
       <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
@@ -1385,6 +1386,16 @@
         <attribute name="name_apt-get" value="libc6-dbg"/>
         <attribute name="name_yum" value="glibc-debuginfo"/>
         <attribute name="more_information" value="Didn't find:   libc debug package; please install it."/>
+      </source>
+      <depends_on name="libc" optional="False"/>
+      <build type="none" objdir="no">
+      </build>
+    </module>
+
+    <module name="libc-2.31">
+      <source type="system_dependency">
+        <attribute name="file_test" value="/usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so"/>
+        <attribute name="more_information" value="Didn't find:   system libc 2.31; please install it."/>
       </source>
       <depends_on name="libc" optional="False"/>
       <build type="none" objdir="no">
