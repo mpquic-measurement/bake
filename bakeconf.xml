@@ -8,7 +8,6 @@
       </source>
       <depends_on name="ns-3.33" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
-      <depends_on name="libaspect" optional="True"/>
       <depends_on name="iperf" optional="True"/>
       <depends_on name="ccnx" optional="True"/>
       <depends_on name="wget" optional="True"/>
