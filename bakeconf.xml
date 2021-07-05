@@ -6,7 +6,7 @@
         <attribute name="url" value="git://github.com/direct-code-execution/ns-3-dce"/>
         <attribute name="module_directory" value="ns-3-dce"/>
       </source>
-      <depends_on name="ns-3.33" optional="False"/>
+      <depends_on name="ns-3-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="iperf" optional="True"/>
       <depends_on name="ccnx" optional="True"/>
