@@ -12,7 +12,6 @@
       <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
-      <depends_on name="libaspect" optional="True"/>
       <depends_on name="iperf" optional="True"/>
       <depends_on name="ccnx" optional="True"/>
       <depends_on name="wget" optional="True"/>
