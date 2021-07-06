@@ -44,7 +44,7 @@
       <attribute name="module_directory" value="ns-3-dce"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
-      <depends_on name="net-next-nuse-4.4.0" optional="False"/>
+      <depends_on name="net-next-nuse-5.10.47" optional="False"/>
       <depends_on name="iproute2-5.10.0" optional="False"/>
       <depends_on name="lksctp-dev" optional="True"/>
       <build type="waf" objdir="yes" sourcedir="ns-3-dce">
@@ -429,6 +429,22 @@
          <attribute name="build_arguments" value="library ARCH=sim"/>
          <attribute name="no_installation" value="True"/>
          <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/libsim-linux3.7.0.so ./; ln -s -f libsim-linux3.7.0.so liblinux.so"/>
+       </build>
+     </module>
+
+     <module name="net-next-nuse-5.10.47">
+       <source type="git">
+         <attribute name="url" value="https://github.com/ParthPratim/net-next-nuse-5.10.47.git"/>
+         <attribute name="module_directory" value="net-next-nuse-5.10.47"/>
+         <attribute name="fetch_option" value=""/>
+       </source>
+       <depends_on name="bc" optional="False"/>
+       <build type="make" objdir="no">
+         <attribute name="supported_os" value="linux;linux2"/>
+         <attribute name="configure_arguments" value="defconfig ARCH=lib"/>
+         <attribute name="build_arguments" value="library ARCH=lib"/>
+         <attribute name="no_installation" value="True"/>
+         <attribute name="post_installation" value="mkdir -p $INSTALLDIR/bin_dce; cd $INSTALLDIR/bin_dce; cp $SRCDIR/arch/lib/tools/libsim-linux-5.10.47.so ./; ln -s -f libsim-linux-5.10.47.so liblinux.so"/>
        </build>
      </module>
 
