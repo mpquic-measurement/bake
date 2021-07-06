@@ -48,7 +48,7 @@
       <depends_on name="lksctp-dev" optional="True"/>
       <build type="waf" objdir="yes" sourcedir="ns-3-dce">
         <attribute name="supported_os" value="linux;linux2"/>
-        <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../net-next-nuse-4.4.0/arch"/>
+        <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../net-next-nuse-5.10.47/arch"/>
       </build>
     </module>
 
