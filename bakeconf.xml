@@ -1432,7 +1432,7 @@
 
     <module name="libc-2.31">
       <source type="system_dependency">
-        <attribute name="file_test" value="/usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so"/>
+        <attribute name="file_test" value="/usr/lib/x86_64-linux-gnu/ld-2.31.so"/>
         <attribute name="more_information" value="Didn't find:   system libc 2.31; please install it."/>
       </source>
       <depends_on name="libc" optional="False"/>
