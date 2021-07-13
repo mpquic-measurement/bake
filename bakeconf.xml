@@ -401,7 +401,7 @@
          <attribute name="ignore_predefined_flags" value="True"/>
          <attribute name="install_arguments" value="DESTDIR=$INSTALLDIR" />
          <attribute name="build_arguments" value="DEFINES+=-I$SRCDIR/../../../../../../arch/lib/include/ DEFINES+=-I$SRCDIR/../../../../../../arch/lib/include/generated/ DEFINES+=-I$SRCDIR/../../../../../../include/uapi/ DEFINES+=-I$SRCDIR/../../../../../../include CCOPTS+=-fpic CCOPTS+=-D_GNU_SOURCE CCOPTS+=-O0 CCOPTS+=-U_FORTIFY_SOURCE CCOPTS+=-g CCOPTS+=-DUINT16_MAX=65535 LDFLAGS=-pie LDFLAGS+=-rdynamic"/>
-         <attribute name="post_installation" value="cp $INSTALLDIR/usr/local/sbin/ethtool $INSTALLDIR/sbin/ethtool"/>
+         <attribute name="post_installation" value="mkdir -p $INSTALLDIR/sbin ; cp $INSTALLDIR/usr/local/sbin/ethtool $INSTALLDIR/sbin/ethtool"/>
        </build>
      </module>
 
