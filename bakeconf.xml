@@ -5,10 +5,10 @@
       <source type="git">
         <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="docker"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
-      <depends_on name="linux-dev" optional="False"/>
+      <depends_on name="libc-2.31" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
       <depends_on name="iperf" optional="True"/>
@@ -24,7 +24,7 @@
       <source type="git">
 		    <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="docker"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
       <build type="waf" objdir="build">
@@ -37,7 +37,7 @@
       <source type="git">
 		  <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
-        <attribute name="revision" value="glibc-build"/>
+        <attribute name="revision" value="docker"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
       <depends_on name="net-next-nuse-4.4.0" optional="False"/>
