@@ -8,8 +8,6 @@
         <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
-      <depends_on name="libc-2.31" optional="False"/>
-      <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
@@ -29,8 +27,6 @@
         <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
-      <depends_on name="glibc-2.31" optional="False"/>
-      <depends_on name="linux-dev" optional="False"/>
       <build type="waf" objdir="build">
         <attribute name="supported_os" value="linux;linux2"/>
         <attribute name="configure_arguments" value="configure --disable-python --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --prefix=$INSTALLDIR"/>
