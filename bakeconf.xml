@@ -207,6 +207,7 @@
         <attribute name="module_directory" value="glibc" />
       </source>
       <depends_on name="gawk" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
       <build type="inline" classname="GlibcModuleBuild">
         <attribute name="patch" value="$SRCDIR/../ns-3-dce/utils/glibc-2.31-disable-security-checks.patch"/>
         <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/glibc-build;cd $INSTALLDIR/glibc-build;$SRCDIR/configure --prefix=/usr --disable-werror" />        
@@ -216,10 +217,13 @@
     def build(self, env, jobs):
            build_dir = env.installdir + '/glibc-build'
            install_dir = env.installdir + '/glibc'
+           linux_dir = env.srcdir + '/../linux'
+           install_hdr_path = install_dir + '/usr'
            dest_dir = 'DESTDIR=' + install_dir
            env.run(['mkdir', '-p', install_dir], directory=env.srcdir)
            env.run(['make'], directory=build_dir)
            env.run(['make', 'install', dest_dir], directory=build_dir)
+           env.run(['make', 'headers_install' , 'INSTALL_HDR_PATH='+install_hdr_path], linux_dir)
     def clean(self, env):
            build_dir = env.installdir + '/glibc-build'
            env.run(['make', 'clean'], directory=build_dir)
@@ -234,10 +238,7 @@
         <attribute name="revision" value="master" />
         <attribute name="module_directory" value="linux" />
       </source>
-      <depends_on name="glibc-2.31" optional="False" />
-      <build type="make" objdir="yes">
-        <attribute name="build_arguments" value="headers_install INSTALL_HDR_PATH=$INSTALLDIR/glibc/usr" />
-        <attribute name="no_installation" value="True"/>
+      <build type="none" objdir="no">
       </build>
      </module>
     
