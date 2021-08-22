@@ -231,12 +231,15 @@ class Bake:
     def resolve_contrib_dependencies (self, module, fmod, configuration):
         """ Handles the contrib type dependencies"""
         for dep in module.dependencies ():
-            dep_mod = configuration.lookup (dep.name())
+            dep_mod = configuration.lookup (dep._name)            
             if dep_mod.mtype() == "ns-contrib":
                 # Do not prepend contrib prefix to user supplied contrib name more than once
                 if not(module.get_source().attribute("module_directory").value.startswith(fmod + '/contrib')):
                     dep_mod.get_source().attribute("module_directory").value = fmod+'/contrib/'+dep_mod.get_source().attribute("module_directory").value
-                dep_mod.addDependencies(ModuleDependency(fmod, False))
+                ns_contrib_dep = ModuleDependency()
+                ns_contrib_dep.attribute("name").value = fmod
+                ns_contrib_dep.attribute("optional").value = "False"
+                dep_mod.addDependencies(ns_contrib_dep)
                 self.resolve_contrib_dependencies (dep_mod, fmod, configuration)
 
     def _enable(self, enable, configuration):
@@ -259,7 +262,10 @@ class Bake:
                 if not(module.get_source().attribute("module_directory").value.startswith(fmod + '/contrib')):
                     module.get_source().attribute("module_directory").value = fmod+'/contrib/'+module.get_source().attribute("module_directory").value
                     
-                module.addDependencies(ModuleDependency(fmod, False))
+                ns_contrib_dep = ModuleDependency()
+                ns_contrib_dep.attribute("name").value = fmod
+                ns_contrib_dep.attribute("optional").value = "False"
+                module.addDependencies(ns_contrib_dep)
                 self.resolve_contrib_dependencies (module, fmod, configuration)
             configuration.enable(module)
 
