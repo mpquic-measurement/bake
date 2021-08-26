@@ -3,8 +3,9 @@
 
     <module name="dce-meta-dev">
       <source type="git">
-        <attribute name="url" value="https://github.com/direct-code-execution/ns-3-dce.git"/>        
+        <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="ns-3-dev" optional="False"/>
       <depends_on name="libc-2.31" optional="False"/>
@@ -23,8 +24,9 @@
 
     <module name="dce-ns3-dev">
       <source type="git">
-		    <attribute name="url" value="https://github.com/direct-code-execution/ns-3-dce.git"/>        
+		    <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
       <depends_on name="glibc-2.31" optional="False"/>
@@ -37,8 +39,9 @@
 
     <module name="dce-linux-dev">
       <source type="git">
-		  <attribute name="url" value="https://github.com/direct-code-execution/ns-3-dce.git"/>        
+		  <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
       </source>
       <depends_on name="dce-meta-dev" optional="False"/>
       <depends_on name="net-next-nuse-4.4.0" optional="False"/>
