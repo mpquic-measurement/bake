@@ -39,7 +39,7 @@
 
     <module name="dce-linux-dev">
       <source type="git">
-		  <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
+        <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
         <attribute name="module_directory" value="ns-3-dce"/>
         <attribute name="revision" value="glibc-build"/>
       </source>
@@ -2326,6 +2326,73 @@
         <attribute name="revision" value="dce-1.11"/>
       </source>
        <depends_on name="dce-meta-1.11" optional="False"/>
+       <depends_on name="quagga" optional="False"/>
+       <depends_on name="iputils" optional="False"/>
+      <build type="none">
+        <attribute name="supported_os" value="linux;linux2"/>
+        <!-- attribute name="configure_arguments" value="configure -prefix=$INSTALLDIR"/ -->
+     </build>
+    </module>
+
+    <!-- dce-1.12 -->
+    <module name="dce-meta-1.12">
+      <source type="git">
+	<attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
+        <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
+      </source>
+      <depends_on name="ns-3.35" optional="False"/>
+      <depends_on name="libc-2.31" optional="False"/>
+      <depends_on name="glibc-2.31" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
+      <depends_on name="elf-loader" optional="True"/>
+      <depends_on name="libaspect" optional="True"/>
+      <depends_on name="ccnx" optional="True"/>
+      <depends_on name="iperf" optional="True"/>
+      <depends_on name="wget" optional="True"/>
+      <depends_on name="thttpd" optional="True"/>
+      <depends_on name="bash" optional="True"/>
+      <build type="none">
+      </build>
+    </module>
+
+    <module name="dce-ns3-1.12">
+      <source type="git">
+	<attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
+        <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
+      </source>
+      <depends_on name="dce-meta-1.12" optional="False"/>
+      <depends_on name="glibc-2.31" optional="False"/>
+      <depends_on name="linux-dev" optional="False"/>
+      <build type="waf" objdir="build">
+        <attribute name="supported_os" value="linux;linux2"/>
+        <attribute name="configure_arguments" value="configure --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --prefix=$INSTALLDIR" />
+      </build>
+    </module>
+
+    <module name="dce-linux-1.12">
+      <source type="git">
+        <attribute name="url" value="https://github.com/ParthPratim/ns-3-dce.git"/>        
+        <attribute name="module_directory" value="ns-3-dce"/>
+        <attribute name="revision" value="glibc-build"/>
+      </source>
+      <depends_on name="dce-meta-1.12" optional="False"/>
+      <depends_on name="net-next-nuse-4.4.0" optional="False"/>
+      <depends_on name="iproute2-4.4.0" optional="False"/>
+      <depends_on name="lksctp-dev" optional="True"/>
+      <build type="waf" objdir="objdir" sourcedir="ns-3-dce">
+        <attribute name="supported_os" value="linux;linux2"/>
+        <attribute name="configure_arguments" value="configure --prefix=$INSTALLDIR --with-ns3=$INSTALLDIR --with-elf-loader=$INSTALLDIR/lib --with-glibc=$INSTALLDIR/glibc --with-libaspect=$INSTALLDIR --enable-kernel-stack=$SRCDIR/../net-next-nuse-4.4.0/arch"/>
+      </build>
+    </module>
+
+    <module name="dce-quagga-1.12">
+      <source type="git">
+        <attribute name="url" value="git://github.com/direct-code-execution/ns-3-dce-quagga"/>
+        <attribute name="module_directory" value="ns-3-dce/myscripts/ns-3-dce-quagga/"/>
+      </source>
+       <depends_on name="dce-meta-1.12" optional="False"/>
        <depends_on name="quagga" optional="False"/>
        <depends_on name="iputils" optional="False"/>
       <build type="none">
