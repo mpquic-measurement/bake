@@ -2343,7 +2343,6 @@
       </source>
       <depends_on name="ns-3.35" optional="False"/>
       <depends_on name="libc-2.31" optional="False"/>
-      <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
       <depends_on name="ccnx" optional="True"/>
