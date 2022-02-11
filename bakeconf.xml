@@ -194,19 +194,19 @@
       <depends_on name="gawk" optional="False"/>
       <build type="inline" classname="GlibcModuleBuild">
         <attribute name="patch" value="$SRCDIR/../ns-3-dce/utils/glibc-2.31-disable-security-checks.patch"/>
-        <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/docker;cd $INSTALLDIR/docker;$SRCDIR/configure --prefix=/usr --disable-werror" />        
+        <attribute name="pre_installation" value="mkdir -p $INSTALLDIR/glibc-build;cd $INSTALLDIR/glibc-build;$SRCDIR/configure --prefix=/usr --disable-werror" />        
         <code>class GlibcModuleBuild(InlineModuleBuild):
     def __init__(self):
         InlineModuleBuild.__init__(self)
     def build(self, env, jobs):
-           build_dir = env.installdir + '/docker'
+           build_dir = env.installdir + '/glibc-build'
            install_dir = env.installdir + '/glibc'
            dest_dir = 'DESTDIR=' + install_dir
            env.run(['mkdir', '-p', install_dir], directory=env.srcdir)
            env.run(['make'], directory=build_dir)
            env.run(['make', 'install', dest_dir], directory=build_dir)
     def clean(self, env):
-           build_dir = env.installdir + '/docker'
+           build_dir = env.installdir + '/glibc-build'
            env.run(['make', 'clean'], directory=build_dir)
     def check_version(self, env):
            return True</code>
