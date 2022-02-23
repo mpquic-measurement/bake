@@ -7,14 +7,14 @@
         <attribute name="module_directory" value="ns-3-dce"/>
         <attribute name="revision" value="glibc-build"/>
       </source>
-      <depends_on name="ns-3-dev" optional="False"/>
+      <depends_on name="ns-3.35" optional="False"/>
       <depends_on name="libc-2.31" optional="False"/>
       <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="elf-loader" optional="True"/>
       <depends_on name="libaspect" optional="True"/>
-      <depends_on name="iperf" optional="True"/>
       <depends_on name="ccnx" optional="True"/>
+      <depends_on name="iperf" optional="True"/>
       <depends_on name="wget" optional="True"/>
       <depends_on name="thttpd" optional="True"/>
       <depends_on name="bash" optional="True"/>
