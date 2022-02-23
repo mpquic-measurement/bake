@@ -1477,7 +1477,7 @@
       </source>
       <depends_on name="netanim" optional="True"/>
       <depends_on name="pybindgen" optional="True"/>
-      <depends_on name="glibc-2.25" optional="False"/>
+      <depends_on name="glibc-2.31" optional="False"/>
       <depends_on name="linux-dev" optional="False"/>
       <depends_on name="pyviz-gtk3-prerequisites" optional="True"/>
       <depends_on name="cmake" optional="False"/>
