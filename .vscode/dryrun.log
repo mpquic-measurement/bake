@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/parth27/builds/bake'
+make: Leaving directory '/home/parth27/builds/bake'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
